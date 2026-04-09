@@ -1,0 +1,24 @@
+# robots.txt para Advogado Fábio Oliveira
+# https://www.advogadofabiooliveira.ag5agencia.site/
+
+User-agent: *
+Allow: /
+
+# Permitir todos os bots de IA
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+# Sitemap
+Sitemap: http://www.advogadofabiooliveira.ag5agencia.site/sitemap.xml

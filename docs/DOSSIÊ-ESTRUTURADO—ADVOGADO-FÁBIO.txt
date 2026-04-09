@@ -1,0 +1,238 @@
+DOSSIÊ ESTRUTURADO — ADVOGADO FÁBIO OLIVEIRA
+AG5 Agência · Projeto #005
+
+COMANDO PARA CRIAÇÃO DO SITE
+Quero que você crie o Site institucional "Mosaic Trust Editorial" em 3 arquivos (index.html, style.css e script.js), usando APENAS HTML5 semântico, CSS3 (Flexbox, Grid, variáveis CSS) e JavaScript Vanilla ES6, sem qualquer framework ou biblioteca externa.
+REGRA: Use imagens genéricas premium (Unsplash) relacionadas ao nicho caso não haja imagens reais. Inclua URLs diretas das imagens.
+IDENTIDADE VISUAL BASE:
+Paleta: #1B3A2B (verde floresta profundo) · #C8861A (âmbar dourado) · #F4EFE6 (creme quente) · #FAFAF7 (off-white) · #1A1A1A (grafite texto)
+Tipografia: Playfair Display (400, 700, 900 — títulos e destaques) + DM Sans (300, 400, 600 — corpo e UI)
+Estilo: Editorial de autoridade humanizada · camadas fotográficas · tipografia grande como âncora estrutural
+Sensação: Confiança acessível · profissionalismo acolhedor · segurança para quem mais precisa
+LAYOUT ESCOLHIDO:
+Hero: B) Fullscreen Mosaico Assimétrico — Fundo verde floresta #1B3A2B com overlay rgba(27,58,43,0.72). Lado esquerdo (55%): título editorial em Playfair Display 8–9vw, subtítulo em DM Sans, dois CTAs (WhatsApp + Conhecer Serviços). Lado direito (45%): mosaico de 3 fotografias em grid assimétrico (foto grande topo + duas menores embaixo, com gap 8px, bordas levemente arredondadas 4px). Foto do Dr. Fábio integrada ao layout com recorte circular 200px posicionada sobre a divisa esquerda/mosaico, gerando continuidade. Linha âmbar #C8861A de 3px à esquerda do headline como elemento decorativo vertical.
+Serviços: A) Bento Grid — Grid assimétrico 12 colunas / 3 linhas. Card principal (6 col × 2 row): Planejamento de Aposentadoria — fundo verde profundo com foto de fundo sutil + overlay. Cards médios (3 col × 1 row): INSS/Revisão, BPC/LOAS, Auxílio-doença. Cards pequenos (3 col × 1 row): demais serviços com ícone SVG + título curto + seta âmbar. Hover: translateY(-6px) + sombra verde/âmbar.
+Depoimentos: C) Stack de cards com parallax — 3 cards empilhados com perspectiva 3D leve. Card ativo full-width, outros visíveis parcialmente atrás (escala 0.94 e 0.88). Ao scroll o stack "desfolha" com translateZ e parallax. Cada card: aspas grandes em Playfair Display âmbar, texto depoimento, nome + avatar circular + estrelas Google.
+Sobre/Credenciais: A) Counters animados + texto curto — 4 counters: "20+" anos de experiência · "2" escritórios (RJ + SP) · "100%" atendimento online · "10+" especialidades previdenciárias. Fundo creme #F4EFE6. Foto do Dr. Fábio (headshot fornecido) em círculo grande à direita com border âmbar 3px.
+ANIMAÇÕES DO PROJETO:
+navbar-logo      → opacity(0) → opacity(1) em 300ms, easing: ease-out, trigger: load
+navbar-links     → opacity(0) translateX(20px) → opacity(1) translateX(0) em 400ms, easing: ease-out, trigger: load, stagger: 60ms
+hero-headline    → opacity(0) translateX(-60px) → opacity(1) translateX(0) em 800ms, easing: cubic-bezier(0.22,1,0.36,1), trigger: load, delay: 150ms
+hero-subtitle    → opacity(0) translateY(20px) → opacity(1) translateY(0) em 700ms, easing: ease-out, trigger: load, delay: 350ms
+hero-ctas        → opacity(0) translateY(20px) → opacity(1) translateY(0) em 600ms, easing: ease-out, trigger: load, delay: 500ms, stagger: 120ms
+hero-foto-fabio  → opacity(0) scale(0.85) → opacity(1) scale(1) em 900ms, easing: cubic-bezier(0.34,1.56,0.64,1), trigger: load, delay: 400ms
+hero-mosaic-img  → opacity(0) scale(0.93) → opacity(1) scale(1) em 1000ms, easing: ease-out, trigger: load, stagger: 150ms (img1: 200ms, img2: 350ms, img3: 500ms)
+bento-cards      → opacity(0) translateY(40px) → opacity(1) translateY(0) em 600ms, easing: ease-out, trigger: IntersectionObserver(0.15), stagger: 80ms
+bento-card-hover → translateY(0) → translateY(-6px) em 250ms, easing: ease, trigger: hover; box-shadow: 0 none → 0 20px 40px rgba(27,58,43,0.2)
+counter-numbers  → 0 → valor-final em 2200ms, easing: ease-out, trigger: IntersectionObserver(0.3), stagger: 120ms
+counter-wrapper  → opacity(0) translateY(30px) → opacity(1) translateY(0) em 700ms, easing: ease-out, trigger: IntersectionObserver
+stack-cards      → opacity(0) translateY(60px) scale(0.95) → opacity(1) translateY(0) scale(1) em 700ms, easing: cubic-bezier(0.22,1,0.36,1), trigger: IntersectionObserver, stagger: 200ms
+stack-parallax   → translateY(0) → translateY(-30px) em scroll proporcional, usando IntersectionObserver + requestAnimationFrame
+faq-items        → height(0) opacity(0) → height(auto) opacity(1) em 400ms, easing: cubic-bezier(0.4,0,0.2,1), trigger: click
+ticker-bar       → translateX(0%) → translateX(-50%) em 35s linear infinite, trigger: load
+section-titles   → opacity(0) translateY(30px) → opacity(1) translateY(0) em 700ms, easing: ease-out, trigger: IntersectionObserver(0.1)
+fab-whatsapp     → scale(1) → scale(1.1) em 200ms + pulse ring 2s infinite, trigger: hover + load
+SEÇÕES OBRIGATÓRIAS:
+
+Navbar
+Hero Mosaico Assimétrico
+Seção de alto impacto: dor e solução — "Seu INSS negado? Você tem direito de lutar." — fundo âmbar/creme com headline dramático e texto humanizado sobre os problemas do público-alvo (burocracia, negativas do INSS, tempo perdido)
+Serviços Bento Grid (10 serviços previdenciários)
+Seção de encantamento — "Atendemos você onde estiver" — fundo verde escuro, imagens de atendimento presencial e online, destaques RJ + SP + Brasil
+Sobre / Credenciais com Counters animados + foto Dr. Fábio
+Depoimentos Stack com Parallax
+Barra animada horizontal: "DR. FÁBIO OLIVEIRA · DIREITO PREVIDENCIÁRIO · APOSENTADORIAS · INSS · BPC/LOAS · AUXÍLIOS · RJ | SP | TODO O BRASIL ·"
+FAQ (8 perguntas frequentes sobre direito previdenciário)
+Localização: endereço + mapa embed + botão "Como Chegar" + contatos e redes sociais
+CTA com formulário ao lado — "Agende sua consulta" — fundo verde floresta + formulário creme
+Rodapé + Créditos
+
+RODAPÉ — coluna de contato (com ícones, todos clicáveis):
+Nome → Advogado Fábio Oliveira (link Google Business se disponível)
+Endereço → R. Amaral Costa, 418 - Loja B - Campo Grande, RJ → link Google Maps
+WhatsApp → (21) 98035-9909
+Instagram → @advogadofabiooliveira → https://www.instagram.com/advogadofabiooliveira
+CRÉDITOS:
+Esquerda: © Advogado Fábio Oliveira 2026
+Direita: Desenvolvido por AG5 Agência (AG5 em #C8861A, link para www.ag5agencia.com.br)
+DIRETRIZES ANTI-GENÉRICO:
+
+Sem cards retangulares padrão com bordas curvas iguais
+Sem hero centralizado com fundo escuro e texto branco genérico
+Sem fade-up igual em todas as seções
+Sem paleta azul + branco + cinza
+Sem 3 colunas de ícone + título + texto
+
+QUALIDADE DE CÓDIGO:
+
+HTML semântico + IDs de ancoragem em todas as seções
+Variáveis CSS no :root para cores, fontes e espaçamentos
+Mobile-first com media queries
+IntersectionObserver para animações de scroll (nunca scroll event direto)
+will-change: transform, @media (prefers-reduced-motion), lazy loading
+Formulário com validação real
+
+OPCIONAL (faz sentido para o nicho):
+
+Barra animada horizontal: nome / serviços / área de atendimento ✅
+Seção de avaliações Google com logo oficial e cards animados ✅ (quando reviews forem fornecidas)
+Botão flutuante WhatsApp com pulse ring âmbar, fixo mobile
+
+
+1 — MÍDIAS PRINCIPAIS
+ItemStatusFoto do Dr. Fábio (headshot profissional)✅ DISPONÍVEL — círculo branco, camisa social branca, gravata azul, barba, braços cruzadosFoto da fachada do escritório❌ AUSENTEFotos internas do escritório❌ AUSENTEFotos de equipe❌ AUSENTELogo da empresa/escritório❌ AUSENTEImagens de atendimento❌ AUSENTE
+Uso de imagens: Utilizar Unsplash com foto do Dr. Fábio fornecida como âncora visual principal. Buscar: jurídico/advogado/idoso atendimento/escritório premium/trabalhador brasileiro.
+
+2 — INFORMAÇÕES DA EMPRESA
+Nome: Advogado Fábio Oliveira
+Nicho: Advocacia Previdenciária (especialidade principal) + Civil + Trabalhista + Imobiliário + Criminal
+Descrição institucional: Serviços jurídicos personalizados com foco no direito previdenciário. Atendimento humanizado e individualizado, compreendendo cada caso em sua totalidade.
+Proposta de valor: Atendimento jurídico previdenciário humanizado e personalizado — presencial em Campo Grande (RJ) e Ribeirão Preto (SP), online em todo o Brasil — desde 2005.
+Público-alvo: Trabalhadores e cidadãos que necessitam de atendimento jurídico previdenciário (aposentadoria, INSS, auxílios, BPC/LOAS).
+Principais serviços:
+
+Planejamento e simulação de aposentadoria
+Análise e regularização do CNIS e tempo de contribuição
+Requerimento e revisão de benefícios do INSS
+Aposentadorias (idade, tempo de contribuição, especial, invalidez)
+Benefícios por incapacidade (auxílio-doença, auxílio-acidente)
+Pensão por morte e salário-maternidade
+Benefício assistencial BPC/LOAS
+Reconhecimento de tempo rural, especial e militar
+Recursos administrativos e ações judiciais contra o INSS
+Cálculo e revisão de valores de benefícios
+
+Diferenciais:
+
+Mais de 20 anos de experiência (desde 2005)
+Atendimento presencial em RJ e SP + online em todo o Brasil
+Atendimento humanizado e personalizado por caso
+Dois escritórios físicos: Campo Grande/RJ e Ribeirão Preto/SP
+
+História: Advogado desde junho de 2005. Grande experiência em direito previdenciário com sólida atuação cível e trabalhista. Escritórios em Campo Grande (RJ) e Ribeirão Preto (SP). Atende clientes em todo o Brasil com foco em atendimento humanizado e compreensão integral de cada caso.
+Contato:
+
+Telefone fixo: ❌ não informado
+WhatsApp: (21) 98035-9909
+E-mail: ❌ não informado
+Endereço principal: R. Amaral Costa, 418 - Loja B - Campo Grande, Rio de Janeiro - RJ, CEP 23050-260
+Segundo escritório: Ribeirão Preto, SP (endereço específico não informado)
+Horário: Segunda a Sexta — 9h às 16h
+
+Links:
+
+Site atual: https://advogadofabiooliveira.com.br/
+Instagram: https://www.instagram.com/advogadofabiooliveira (4.834 seguidores · 210 posts)
+Facebook: advogadofabiooliveira (perfil confirmado, link completo não fornecido)
+Google Business: ❌ não informado
+LinkedIn: ❌ não informado
+
+Registro profissional: OAB ❌ não informado
+CNPJ: ❌ não informado
+
+3 — AVALIAÇÕES
+
+Nenhuma avaliação foi fornecida no formulário de intake. Verificação via Google Business não foi possível pois o link não foi informado.
+
+⚠️ PENDÊNCIA CRÍTICA: Solicitar ao cliente link do perfil Google Business e exportação das avaliações para inclusão na seção de depoimentos.
+
+4 — ANÁLISE DE BRANDING
+Nicho: Advocacia Previdenciária
+Posicionamento: Médio-Premium acessível — atende principalmente trabalhadores, aposentados e cidadãos de renda média que precisam de suporte jurídico previdenciário. Não é um escritório de elite empresarial, mas tampouco é um escritório popular sem diferenciação — é um especialista consolidado com 20 anos de atuação e presença digital expressiva (4.834 seguidores).
+Estilo visual predominante: Autoridade humanizada — combina elementos editoriais sofisticados com acolhimento visual. Diferente dos escritórios de advocacia premium fria, precisa transmitir confiança e aproximação.
+Paleta de cores recomendada:
+CorHexUsoVerde Floresta Profundo#1B3A2BFundo hero, navbar, seções âncoraÂmbar Dourado#C8861AAccent, CTAs, destaques, AG5 créditoCreme Quente#F4EFE6Fundo seções secundárias, cardsOff-white#FAFAF7Fundo geral, bodyGrafite Texto#1A1A1ATexto principalVerde médio#2D6147Hover states, bordas sutis
+
+Diferenciação de paleta: Verde floresta #1B3A2B não foi utilizado em nenhum projeto anterior AG5. Distingue-se do verde Matrix (#2B7A1F — mais vibrante/industrial) pelo tom mais profundo e formal. O âmbar dourado difere do gold #FFCC00 (Luan) e do #C9A882 (Monique) por sua temperatura mais terrosa.
+
+Direção estética: Editorial de autoridade humanizada. Mosaico fotográfico como elemento estrutural. Tipografia grande como âncora visual. Fotografia do advogado como elemento central de confiança — a identidade do escritório é fortemente vinculada à figura do Dr. Fábio.
+Sensação de marca: "Um especialista de décadas que te atende pessoalmente" — segurança, experiência, acessibilidade, cuidado individual.
+Tipografia:
+
+Títulos/Display: Playfair Display (400, 700, 900) — autoridade editorial com serifa elegante
+Corpo/UI: DM Sans (300, 400, 600) — humanista moderno, alta legibilidade
+(Diferente de: Cormorant Garamond usada na Advocacia Áurea)
+
+Referências premium do nicho previdenciário:
+
+Sérgio Bermudes Advogados (sb.adv.br) — autoridade + minimalismo
+Dias de Souza Advogados — editorial dark com foto do sócio em destaque
+Escritórios especializados em INSS como Madaleno Advocacia — enfoque humano/acessível
+
+
+5 — CHECKLIST DE PENDÊNCIAS
+MÍDIAS
+
+ Logo do escritório (PNG/SVG fundo transparente)
+ Foto da fachada do escritório (Campo Grande)
+ Fotos internas do escritório
+ Fotos de atendimento (advogado + cliente em reunião)
+ Foto do segundo escritório (Ribeirão Preto)
+
+CONTATOS E DADOS
+
+ Número OAB do Dr. Fábio Oliveira
+ E-mail de contato profissional
+ Telefone fixo do escritório
+ Endereço completo do escritório de Ribeirão Preto, SP
+ CNPJ (se pessoa jurídica)
+
+LINKS E PERFIS
+
+ Link completo e verificado do perfil Google Business
+ Link direto do Facebook (perfil pessoal ou página da empresa)
+ LinkedIn profissional
+ Export das avaliações Google (nota média + textos)
+
+CONTEÚDO
+
+ FAQs respondidas (foram solicitadas mas não preenchidas)
+ Depoimentos de clientes para aprovação de uso
+ Texto institucional aprovado pelo cliente
+
+
+6 — ANÁLISE DE REFERÊNCIAS WEBFLOW
+
+TEMPLATE 1 — Lawyers (BRIX Templates)
+URL Preview: https://lawfirmtemplate.webflow.io/
+HERO: Split aproximado 50/50 — título "The #1 Law Firm in Los Angeles" à esquerda em sans-serif bold, dois CTAs abaixo (primário sólido + secundário outline). Fotografia de profissional jurídico à direita ocupando altura completa. Fundo branco/claro. Entrada: título desliza da esquerda, imagem funde com fade. Elemento diferenciador: muito convencional — funcional mas sem personalidade.
+NAV: Sticky no topo · logo esquerda · links centrais · CTA "Free Consultation" direita em botão sólido escuro · sem comportamento visual especial no scroll.
+TIPOGRAFIA: Sans-serif clean (similar Inter/Poppins) · títulos ~4rem/bold · subtítulos ~1rem/regular · sem uso criativo tipográfico.
+CORES (adaptação ao branding Fábio): Substituir branco por #FAFAF7, azul escuro padrão por #1B3A2B, accent genérico por #C8861A.
+SERVIÇOS/CARDS: Grade 4 colunas com ícone SVG + título + texto curto — padrão genérico a EVITAR. Espaçamento uniforme, cards idênticos.
+ANIMAÇÕES: Fade-up genérico em todas as seções, sem stagger diferenciado · hover em cards: leve elevação e sombra · sem elementos surpreendentes.
+MICRO-INTERAÇÕES: Hover em botão: mudança de background simples. Nenhum cursor customizado.
+ELEMENTOS DECORATIVOS: Ausentes — design muito limpo mas inexpressivo.
+RESUMO CONSTRUTIVO: Template altamente funcional mas completamente genérico. Serve como referência de estrutura de informação (quais seções incluir, ordem lógica) mas não deve ser replicado visualmente. Evitar o hero split simétrico, os cards 4-colunas com ícone, e as animações uniformes.
+
+TEMPLATE 2 — Brandt (Metrik)
+URL Preview: https://brandt-law-firm-business-template.webflow.io/
+HERO: Fullscreen com composição editorial de alto impacto. Título "Excellence in Legal Counsel" em fonte serif grande (~6–7vw) alinhado à esquerda. Lado direito: mosaico de 3–4 fotos sobrepostas/empilhadas com offsets intencionais — foto grande + duas menores criando profundidade. Fundo quase preto #0F0F0F. CTA minimal "Discover ↓" com seta. Efeito de entrada: fotos entram em sequência com fade + leve escala.
+NAV: Mega-menu lateral com pré-visualização de imagem ao hover nos itens de prática. Nav transparente sobre hero, solidifica ao scroll com fundo escuro sutil. Ícone de carrinho integrado (irrelevante para advocacia).
+TIPOGRAFIA: Serif elegante nos títulos (similar Cormorant/Playfair) + sans-serif para corpo. Tamanhos: headline hero ~6vw · subtítulo ~1.1rem · uso de itálico nos títulos para sofisticação.
+CORES (adaptação ao branding Fábio): Substituir preto #0F0F0F por #1B3A2B · manter lógica de contraste alto · accent âmbar (#C8861A) no lugar do marrom/champagne original (#E4B9A7).
+SERVIÇOS/CARDS: No mega-menu: lista com miniatura fotográfica à esquerda de cada serviço + seta de navegação. Na página de serviços: lista editorial com número grande + título + texto. Diferente e sofisticado.
+ANIMAÇÕES: Fotos do mosaico: opacity(0) scale(0.95) → opacity(1) scale(1) em 900ms, easing: ease-out, stagger 200ms · título: translateX(-40px) opacity(0) → translateX(0) opacity(1) em 800ms · parallax sutil nas fotos do mosaico durante scroll.
+MICRO-INTERAÇÕES: Seta âmbar nos links de serviço anima translateX(4px) no hover · cursor customizado circular nos hover de imagens · cards de serviço escurecem levemente no hover com overlay.
+ELEMENTOS DECORATIVOS: Linha fina horizontal separando seções · nenhum blob/forma — minimalismo puro. Offset intencional das fotos no mosaico como único elemento decorativo estrutural.
+RESUMO CONSTRUTIVO: Este é o principal template de referência para o Fábio. Recriar a lógica do mosaico fotográfico assimétrico no hero — 1 foto grande (topo direita) + 2 menores (embaixo, com gap de 8px) — com clip-path ou border-radius mínimo. Aplicar verde #1B3A2B como fundo dominante no hero. Usar serif elegante (Playfair Display) para o headline principal. A navegação com comportamento suave no scroll e mega-menu com imagens adapta-se bem para mostrar os serviços previdenciários visualmente. O parallax sutil nas fotos deve ser implementado via IntersectionObserver + requestAnimationFrame.
+
+TEMPLATE 3 — Solicitor (CrowdyFlow)
+URL Preview: https://solicitor-template.webflow.io/
+HERO: Fullscreen escuro com headline editorial centralizado "Legal Insight. Business Success." em bold grande (~5–6vw), subtítulo em regular menor, CTA primário sólido "Book Consultation". Fundo foto desfocada com overlay escuro — clássico mas eficaz. Sem elemento diferenciador visual forte.
+NAV: Sticky com logo + links + número de telefone clicável visível na topbar acima da nav · ícones de redes sociais na topbar · comportamento clean no scroll.
+TIPOGRAFIA: Bold sans-serif para título hero · serif nos subtítulos secundários · pesos bem contrastados entre título e corpo.
+CORES (adaptação ao branding Fábio): Substituir navy padrão por #1B3A2B · accent em #C8861A.
+SERVIÇOS/CARDS: Grade 6 cards com imagem de capa, título e texto descritivo — cards de tamanho uniforme. Layout funcional mas convencional. Hover: overlay escuro + seta aparece.
+ANIMAÇÕES: Counters animados na seção Founder: 12+ anos, 150+ parceiros, 100+ advogados — entrada via IntersectionObserver, números contam de 0 ao valor. Seção fundador com foto grande e citação em aspas grandes — bom modelo para seção "Sobre" do Fábio.
+MICRO-INTERAÇÕES: Hover em cards de serviço: overlay escuro + ícone de seta · hover em links da nav: sublinhado animado deslizando da esquerda.
+ELEMENTOS DECORATIVOS: Aspas grandes tipográficas na seção de testemunho do fundador (decorativas, não funcionais) · separador de linha fina entre seções.
+RESUMO CONSTRUTIVO: Usar a lógica da seção "Founder" do Solicitor como inspiração direta para a seção "Sobre" do Dr. Fábio — foto grande à direita, citação pessoal com aspas decorativas em Playfair Display, counters animados abaixo. Os counters (anos de experiência, escritórios, atendimento nacional) são muito adequados para este cliente. A topbar com telefone visível é uma boa prática para o público previdenciário que valoriza contato direto — implementar com WhatsApp fixo visível.
+
+7 — SISTEMA DE VARIAÇÃO DE LAYOUT
+Escolhas registradas para Advogado Fábio Oliveira:
+SeçãoEscolhaJustificativaHero✅ B) Fullscreen Mosaico AssimétricoInspirado no Brandt. Difere do Split 55/45 usado em Advocacia Áurea e Monique FreitasServiços✅ A) Bento GridCards de tamanhos variados — completamente diferente do Acordeão Numerado usado nas duas outras advocaciasDepoimentos✅ C) Stack de cards com parallaxDifere do Marquee (Luan, Monique) e do Fade Carousel (Áurea, Matrix)Sobre/Credenciais✅ A) Counters animados + texto curtoDifere do Sticky Split usado em ambas as advocacias anteriores
+Fundo Hero: ✅ H) Foto de pessoas/confiança — mosaico de 3 fotos: idoso em atendimento, trabalhador com documentos, foto do Dr. Fábio como âncora central.
+
+Registro no Site DNA AG5 — Advocacia Campo Grande/RJ:
+ProjetoHeroServiçosDepoimentosSobrePaleta PrincipalAdvocacia ÁureaSplit 55/45Acordeão NumeradoFade CarouselSticky SplitGold + Black + CreamMonique FreitasSplit 55/45Acordeão NumeradoMarquee InfinitoSticky SplitNavy #1A2D4A + Rose Gold #C9A882Advogado Fábio OliveiraFullscreen MosaicoBento GridStack ParallaxCounters AnimadosVerde #1B3A2B + Âmbar #C8861A
