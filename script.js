@@ -13,19 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.getElementById('mobile-toggle');
     const navLinks = document.getElementById('nav-links');
 
-    mobileToggle.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.backgroundColor = 'rgba(31, 31, 31, 0.98)';
-            navLinks.style.padding = '40px';
-            navLinks.style.gap = '20px';
-        }
-    });
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 
     // Reveal Animations on Scroll
     const revealElements = document.querySelectorAll('.reveal');
@@ -55,32 +58,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Testimonials Stack Parallax
+    // Testimonials Stack Parallax (desktop only)
     const testimonialStack = document.getElementById('testimonials-stack');
     const cards = document.querySelectorAll('.testimonial-card');
 
-    // Initial positioning
-    cards.forEach((card, index) => {
-        card.style.zIndex = cards.length - index;
-        card.style.transform = `translateY(${index * 20}px) scale(${1 - index * 0.05})`;
-        card.style.opacity = 1 - index * 0.2;
-    });
+    // Only apply parallax on desktop (width > 768px)
+    if (window.innerWidth > 768) {
+        // Initial positioning
+        cards.forEach((card, index) => {
+            card.style.zIndex = cards.length - index;
+            card.style.transform = `translateY(${index * 20}px) scale(${1 - index * 0.05})`;
+            card.style.opacity = 1 - index * 0.2;
+        });
 
-    window.addEventListener('scroll', () => {
-        const rect = testimonialStack.getBoundingClientRect();
-        const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        window.addEventListener('scroll', () => {
+            const rect = testimonialStack.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
 
-        if (scrollPercent > 0 && scrollPercent < 1) {
-            cards.forEach((card, index) => {
-                const offset = Math.max(0, scrollPercent - 0.2) * 500 * (index + 1);
-                const scale = 1 - index * 0.05 + (scrollPercent * 0.05);
-                const rotate = index * 2 - (scrollPercent * 5);
+            if (scrollPercent > 0 && scrollPercent < 1) {
+                cards.forEach((card, index) => {
+                    const offset = Math.max(0, scrollPercent - 0.2) * 500 * (index + 1);
+                    const scale = 1 - index * 0.05 + (scrollPercent * 0.05);
+                    const rotate = index * 2 - (scrollPercent * 5);
 
-                card.style.transform = `translateY(${index * 20 - offset}px) scale(${scale}) rotate(${rotate}deg)`;
-                card.style.opacity = 1 - (index * 0.2) + (scrollPercent * 0.2);
-            });
-        }
-    });
+                    card.style.transform = `translateY(${index * 20 - offset}px) scale(${scale}) rotate(${rotate}deg)`;
+                    card.style.opacity = 1 - (index * 0.2) + (scrollPercent * 0.2);
+                });
+            }
+        });
+    }
 
     // Form Submission
     const contactForm = document.getElementById('contact-form');
