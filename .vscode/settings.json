@@ -1,0 +1,13 @@
+{
+  "git.autoRepositoryDetection": true,
+  "git.repositoryScanMaxDepth": 3,
+  "git.repositoryScanIgnoredFolders": [
+    "node_modules",
+    ".wrangler",
+    ".next",
+    "dist",
+    "build",
+    "assets"
+  ],
+  "livePreview.defaultPreviewPath": "/03 - LP Concluídas/LP - Bruno Viana (Adv)/index.html"
+}
